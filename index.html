@@ -1,85 +1,134 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Glyph</title>
-<meta name="description" content="Scan your pet's prescription label. Glyph turns it into a dose schedule with reminders, and lets the people who help care for your pet mark doses as given.">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Glyph</title>
+<meta name="description" content="Scan your pet's prescription label. Glyph reads it, you confirm it, and every dose gets a reminder. Share the schedule with whoever helps care for your pet.">
 <link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="site wrap">
   <a class="wordmark" href="./">glyph</a>
-  <nav><a href="./#how">How it works</a><a href="./#households">Households</a><a href="support.html">Support</a></nav>
+  <nav><a href="#how">How it works</a><a href="#households">Households</a><a href="support.html">Support</a></nav>
 </header>
 
-<main class="wrap">
-  <section class="hero">
-    <div class="copy">
-      <h1>Scan the label. Get the schedule.</h1>
-      <p class="lede">Point your camera at a vet prescription or supplement label. Glyph reads it, you confirm it, and every dose shows up on time with a reminder.</p>
+<!-- HERO: the scan moment. A pharmacy label is read and its fields lift out into a dose. -->
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1>Your vet wrote it sideways in six‑point type.<br><em>Glyph reads it.</em></h1>
+      <p class="lede">Point your phone at the label on the bottle. In a few seconds you have a dose schedule, reminders, and a way to share it with whoever's holding the leash.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="support.html#beta">Join the beta</a>
-        <span class="note">iPhone first. Android after launch.</span>
+        <a class="btn btn-primary" href="support.html#beta">Join the iPhone beta</a>
+        <span class="note">Free during beta. Android after launch.</span>
       </div>
     </div>
 
-    <div class="phone" aria-label="The Glyph home screen" role="img">
-      <div class="pet"><div class="avatar">B</div><div><b>Biscuit</b><small>Goldendoodle &middot; 4 yrs</small></div></div>
-      <div class="progress"><small>Today's doses</small><b><span>2</span> of 3 given</b><div class="track"><div class="fill"></div></div></div>
-      <div class="label"><span>Today</span><span>3 doses</span></div>
-      <div class="dose done"><div class="t"><b>8:00</b><small>AM</small></div><div class="bar"></div><div class="n"><b>Apoquel 16mg</b><small>1 tablet &middot; with food</small></div><div class="dot" style="background:#4A6B82"></div><div class="chk">&#10003;</div></div>
-      <div class="dose done"><div class="t"><b>8:00</b><small>AM</small></div><div class="bar"></div><div class="n"><b>YuMOVE Hip + Joint</b><small>2-3 soft chews</small></div><div class="dot" style="background:#E66B53"></div><div class="chk">&#10003;</div></div>
-      <div class="dose"><div class="t"><b>8:00</b><small>PM</small></div><div class="bar"></div><div class="n"><b>Apoquel 16mg</b><small>1 tablet &middot; with food</small></div><div class="dot" style="background:#4A6B82"></div><div class="chk"></div></div>
-      <div class="med">
-        <div class="top"><div><b>YuMOVE Vet Max Strength Hip + Joint</b><small>Supplement</small></div><span class="pill">Active</span></div>
-        <div class="meta"><div><small>Dose</small><b>2-3 soft chews</b></div><div><small>Schedule</small><b>Once daily</b></div><div><small>Type</small><b>Supplement</b></div></div>
-        <div class="instr">&#9776; <span>loading, first 4-6 weeks, then 1-2 daily</span> &rsaquo;</div>
-        <div class="acts"><span>&#10003; Finished</span><span>&#128197; Extend</span></div>
+    <div class="scene" aria-label="A pharmacy label being scanned into a dose schedule">
+      <div class="rx">
+        <div class="rx-head"><b>Westside Veterinary Pharmacy</b><span>Rx 4481902</span></div>
+        <div class="rx-pt">BISCUIT NICOLINI (CANINE) &nbsp;·&nbsp; DR. CHEN</div>
+        <div class="rx-drug">APOQUEL 16MG TAB <small>oclacitinib</small></div>
+        <div class="rx-sig">GIVE 1 TABLET BY MOUTH TWICE DAILY WITH FOOD FOR 14 DAYS</div>
+        <div class="rx-foot"><span>QTY 28</span><span>REFILLS 2</span><span>FILLED 10/14/26</span></div>
+        <div class="rx-warn">CAUTION: FEDERAL LAW RESTRICTS THIS DRUG TO USE BY OR ON THE ORDER OF A LICENSED VETERINARIAN</div>
+        <div class="scanline" aria-hidden="true"></div>
+        <span class="tag t1" aria-hidden="true">Apoquel 16mg</span>
+        <span class="tag t2" aria-hidden="true">1 tablet</span>
+        <span class="tag t3" aria-hidden="true">Twice daily</span>
+        <span class="tag t4" aria-hidden="true">14 days</span>
+        <span class="tag t5" aria-hidden="true">with food</span>
+      </div>
+
+      <div class="result">
+        <div class="result-head"><span>Today</span><span>2 doses</span></div>
+        <div class="dose"><div class="t"><b>8:00</b><small>AM</small></div><div class="bar"></div><div class="n"><b>Apoquel 16mg</b><small>1 tablet · with food</small></div><div class="chk">✓</div></div>
+        <div class="dose"><div class="t"><b>8:00</b><small>PM</small></div><div class="bar"></div><div class="n"><b>Apoquel 16mg</b><small>1 tablet · with food</small></div><div class="chk soft"></div></div>
+        <div class="result-foot">Course ends Oct 27 · 2 refills · reminders set</div>
       </div>
     </div>
-  </section>
-</main>
+  </div>
+</section>
 
+<!-- the three claims, large, on coral -->
+<section class="band-brand">
+  <div class="wrap claims">
+    <div><b>Under a minute</b><p>from bottle to first reminder. No typing the sig.</p></div>
+    <div><b>You confirm every field</b><p>before anything is saved. Unsure fields are flagged, not guessed.</p></div>
+    <div><b>Reminders live on your phone</b><p>not on a server. Airplane mode, dead zones, still fires.</p></div>
+  </div>
+</section>
+
+<!-- what the label says vs what you get -->
 <section class="band" id="how">
   <div class="wrap">
-    <div class="intro"><h2>From label to reminder in under a minute</h2><p>Vet labels are small, printed sideways, and half the words are abbreviations. Glyph does the reading so you don't have to.</p></div>
-    <div class="steps">
-      <article><h3>Scan</h3><p>Hold the phone over the label. Glyph takes several frames and reconciles them, so a crooked or glossy label still reads.</p></article>
-      <article><h3>Confirm</h3><p>You see what was read: drug, dose, how often, how long. Anything the scan wasn't sure about is highlighted. Nothing is saved until you say so.</p></article>
-      <article><h3>Remind</h3><p>Each dose gets its own time and its own reminder on your phone. Mark it given with one tap, or undo if you tapped by mistake.</p></article>
-    </div>
-  </div>
-</section>
-
-<section class="band" id="households">
-  <div class="wrap">
-    <div class="two">
-      <div class="intro"><h2>One schedule for everyone who gives the meds</h2><p>Invite a partner, a dog walker, or the sitter with a six-character code. They see what's due and mark it given. You see that it happened. Only you can add or change a prescription.</p></div>
-      <div class="quiet">
-        <h3>Who can do what</h3>
-        <div class="roles">
-          <div><b>Owner</b><span>Scans labels, edits schedules, invites and removes caregivers, keeps the account.</span></div>
-          <div><b>Caregiver</b><span>Sees today's doses for the pets shared with them and marks doses as given. Never pays.</span></div>
-          <div><b>Multiple pets</b><span>Each pet has its own schedule. One scan can be given to more than one pet in the same house.</span></div>
-        </div>
+    <div class="intro"><h2>Labels are written for pharmacists. Schedules are for people at 7 a.m.</h2><p>Glyph takes several frames of the label, reconciles them, and turns the abbreviations into a plan you can act on.</p></div>
+    <div class="compare">
+      <div class="raw"><span class="cap">What the camera sees</span><pre>WESTSlDE VET PHARM   Rx 44819O2
+APOQUEL 16MG TAB  #28
+SlG: 1 TAB PO BID C FOOD X14D
+RF:2   DR CHEN
+BISCUIT NICOLINl K9</pre></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="parsed">
+        <span class="cap">What you get</span>
+        <dl>
+          <div><dt>Medication</dt><dd>Apoquel 16mg <small>oclacitinib</small></dd></div>
+          <div><dt>Dose</dt><dd>1 tablet</dd></div>
+          <div><dt>How often</dt><dd>Twice daily <small>8:00 AM · 8:00 PM</small></dd></div>
+          <div><dt>With food</dt><dd>Yes</dd></div>
+          <div><dt>For how long</dt><dd>14 days <small>ends Oct 27</small></dd></div>
+          <div class="flag"><dt>Patient</dt><dd>Biscuit <small>looks like a pet name — confirm</small></dd></div>
+        </dl>
       </div>
     </div>
+    <p class="fine">Anything the scan isn't sure about shows up amber on the review screen. You fix it or confirm it. Nothing is saved until you tap Confirm.</p>
   </div>
 </section>
 
+<!-- households -->
+<section class="band canvas" id="households">
+  <div class="wrap two">
+    <div class="intro">
+      <h2>The dog walker gives the 2 p.m. dose. You see it from the office.</h2>
+      <p>Invite anyone with a six‑character code. They see what's due for the pets you share and mark it given. Only you can add or change a prescription. Remove them any time; access ends immediately.</p>
+      <div class="roles">
+        <div><b>Owner</b><span>Scans, edits, invites, pays.</span></div>
+        <div><b>Caregiver</b><span>Sees today's doses, marks them given. Never pays.</span></div>
+        <div><b>Several pets</b><span>Each has its own schedule. One scan can go to two dogs in the same house.</span></div>
+      </div>
+    </div>
+    <div class="ticket" aria-label="An invite code">
+      <span class="ticket-cap">Invite code</span>
+      <span class="code">K7Q‑4NX</span>
+      <span class="ticket-sub">Share it from the app. Works once. Expires in 7 days.</span>
+    </div>
+  </div>
+</section>
+
+<!-- honesty -->
 <section class="band">
   <div class="wrap">
-    <p class="callout"><b>You confirm every label before it becomes a schedule.</b> Glyph reads labels; it does not prescribe, change doses, or give medical advice. It is for medications and supplements a veterinarian prescribed or recommended for an animal in your care.</p>
+    <p class="callout"><b>Glyph reads labels. It doesn't prescribe.</b> It never changes a dose, never suggests one, and never gives medical advice. It's for medications and supplements a veterinarian prescribed or recommended for an animal in your care, and you confirm that each time you save one.</p>
   </div>
 </section>
 
+<section class="band cta">
+  <div class="wrap">
+    <h2>Scan the next bottle instead of squinting at it.</h2>
+    <div class="actions"><a class="btn btn-primary" href="support.html#beta">Join the iPhone beta</a></div>
+  </div>
+</section>
+</main>
+
 <footer class="site wrap">
-  <span>&copy; 2026 Kodah Tech LLC. Glyph is for pet medications prescribed or recommended by a veterinarian.</span>
+  <span>© 2026 Kodah Tech LLC</span>
   <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a></nav>
 </footer>
 </body>
