@@ -14,7 +14,7 @@
 <body>
 <header class="site wrap">
   <a class="wordmark" href="./">glyph</a>
-  <nav><a href="#how">How it works</a><a href="#households">Households</a><a href="support.html">Support</a></nav>
+  <nav><a href="#scanning">Scanning</a><a href="#how">How it works</a><a href="#households">Households</a><a href="support.html">Support</a></nav>
 </header>
 
 <!-- HERO: the scan moment. A pharmacy label is read and its fields lift out into a dose. -->
@@ -62,6 +62,54 @@
     <div><b>Under a minute</b><p>from bottle to first reminder. No typing the sig.</p></div>
     <div><b>You confirm every field</b><p>before anything is saved. Unsure fields are flagged, not guessed.</p></div>
     <div><b>Reminders live on your phone</b><p>not on a server. Airplane mode, dead zones, still fires.</p></div>
+  </div>
+</section>
+
+<!-- how scanning works: curved bottle, three frames, one read -->
+<section class="band" id="scanning">
+  <div class="wrap scan-grid">
+    <div class="intro">
+      <h2>One frame of a curved label is never enough. So Glyph takes several.</h2>
+      <p>A bottle label bends away from the camera at both edges. Glossy ones catch the light. The far side of a 2‑inch vial is out of focus while the near side is sharp. Glyph shoots a short burst as you move the phone, reads the text in each frame on the device, and then reconciles them: where frames disagree, the reading that appears most often wins, and the field is marked as less certain.</p>
+      <ul class="facts">
+        <li><b>Burst, not a snapshot.</b> Several frames from slightly different angles, taken while you sweep.</li>
+        <li><b>Text is read on your phone.</b> Only the text goes to our server to be structured. Photos stay on the device and are not stored.</li>
+        <li><b>Abbreviations expanded.</b> SID, BID, TID, q8h, PO, PRN, EOD, "x14d" become plain words and real clock times.</li>
+        <li><b>Doubt is shown, not hidden.</b> A field that read differently across frames, or didn't appear at all, comes up amber for you to check.</li>
+      </ul>
+    </div>
+
+    <div class="lab" id="lab" aria-label="A phone scanning a curved label on a bottle, three frames merging into one reading">
+      <div class="bottle">
+        <div class="cap"></div>
+        <div class="body">
+          <div class="lbl">
+            <div class="lbl-inner">
+              <b>WESTSIDE VET PHARMACY</b>
+              <span>Rx 4481902 &nbsp; BISCUIT (K9)</span>
+              <strong>APOQUEL 16MG TAB</strong>
+              <span>1 TAB PO BID C FOOD X14D</span>
+              <span>QTY 28 &nbsp; RF 2 &nbsp; DR CHEN</span>
+            </div>
+            <div class="gloss"></div>
+          </div>
+        </div>
+      </div>
+      <div class="cam"><div class="lens"></div></div>
+      <div class="frames">
+        <div class="frame f1"><i>WESTSlDE VET</i><i>APOQUEL 16MG</i><i>1 TAB PO B|D</i></div>
+        <div class="frame f2"><i>Rx 44819O2</i><i>APOQUEL 16MG TAB</i><i>PO BID C FOOD</i></div>
+        <div class="frame f3"><i>BISCUIT (K9)</i><i>TAB PO BID</i><i>C FOOD X14D  RF 2</i></div>
+      </div>
+      <div class="read">
+        <span class="read-cap">Reconciled</span>
+        <div class="row"><span>Apoquel 16mg</span><em class="ok">3 of 3</em></div>
+        <div class="row"><span>1 tablet, by mouth</span><em class="ok">3 of 3</em></div>
+        <div class="row"><span>Twice daily · with food</span><em class="ok">2 of 3</em></div>
+        <div class="row"><span>14 days · 2 refills</span><em class="ok">2 of 3</em></div>
+        <div class="row amber"><span>Patient: Biscuit</span><em>check</em></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -131,5 +179,15 @@ BISCUIT NICOLINl K9</pre></div>
   <span>© 2026 Kodah Tech LLC</span>
   <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a></nav>
 </footer>
+<script>
+// Replay the scanning sequence each time it scrolls into view. Pure CSS otherwise.
+(function(){
+  var lab=document.getElementById('lab'); if(!lab||!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){lab.classList.remove('play');void lab.offsetWidth;lab.classList.add('play');}
+  });},{threshold:.5});
+  io.observe(lab);
+})();
+</script>
 </body>
 </html>
