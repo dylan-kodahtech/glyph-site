@@ -41,7 +41,8 @@ header.site nav a:hover{color:var(--ink)}
 .hero{padding-block:36px 80px}
 .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
 .hero-copy{display:grid;gap:24px;max-width:36rem}
-.lede{font-size:1.2rem;color:var(--ink2);max-width:31rem}
+.lede{font-size:1.2rem;color:var(--ink2);max-width:33rem}
+.lede .mono{font-family:var(--mono);font-size:.9em;background:var(--canvas);padding:2px 6px;border-radius:6px;white-space:nowrap;color:var(--ink)}
 @media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:44px}.hero{padding-block:20px 60px}}
 
 .scene{position:relative;display:grid;gap:18px;justify-items:center}
