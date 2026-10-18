@@ -56,12 +56,14 @@ header.site nav a:hover{color:var(--ink)}
 .rx-sig{font-size:12.5px;font-weight:500;margin:8px 0 10px;line-height:1.4}
 .rx-foot{display:flex;gap:14px;color:#555;font-size:10.5px}
 .rx-warn{margin-top:10px;font-size:8.5px;color:#777;letter-spacing:.02em;line-height:1.3}
-.scanline{position:absolute;left:0;right:0;top:-8%;height:14%;background:linear-gradient(180deg,rgba(194,57,43,0),rgba(194,57,43,.22) 45%,rgba(194,57,43,.9) 50%,rgba(194,57,43,.22) 55%,rgba(194,57,43,0));
+.scanline{display:none;position:absolute;left:0;right:0;top:-8%;height:14%;background:linear-gradient(180deg,rgba(194,57,43,0),rgba(194,57,43,.22) 45%,rgba(194,57,43,.9) 50%,rgba(194,57,43,.22) 55%,rgba(194,57,43,0));
   animation:scan 2.2s cubic-bezier(.5,0,.3,1) .4s both;pointer-events:none}
+.scene.play .scanline{display:block}
 @keyframes scan{0%{top:-14%;opacity:0}8%{opacity:1}92%{opacity:1}100%{top:104%;opacity:0}}
 /* fields lift out of the label */
 .tag{position:absolute;font-family:var(--font);font-weight:600;font-size:12.5px;background:var(--ink);color:#fff;padding:5px 9px;border-radius:8px;white-space:nowrap;opacity:0;transform:translateY(6px) scale(.96);
-  animation:lift .5s cubic-bezier(.2,.9,.3,1.2) both;box-shadow:0 8px 18px -10px rgba(10,10,11,.6)}
+  box-shadow:0 8px 18px -10px rgba(10,10,11,.6)}
+.scene.play .tag{animation:lift .5s cubic-bezier(.2,.9,.3,1.2) both;}
 .tag.t1{left:14px;top:66px;animation-delay:1.0s}
 .tag.t2{right:18px;top:60px;animation-delay:1.25s;background:var(--brand)}
 .tag.t3{left:24px;top:112px;animation-delay:1.5s}
@@ -70,7 +72,8 @@ header.site nav a:hover{color:var(--ink)}
 @keyframes lift{to{opacity:1;transform:none}}
 /* the resulting schedule card */
 .result{width:min(360px,100%);background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:12px;box-shadow:0 30px 60px -36px rgba(10,10,11,.5);
-  opacity:0;transform:translateY(14px);animation:lift .6s ease-out 2.4s both;font-size:14px;margin-top:-6px}
+  opacity:0;transform:translateY(14px);font-size:14px;margin-top:-6px}
+.scene.play .result{animation:lift .6s ease-out 2.4s both}
 .result-head{display:flex;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin:2px 4px 8px}
 .result-foot{font-size:12.5px;color:var(--ink3);margin:6px 4px 0}
 .dose{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:11px 12px;margin-bottom:8px}
@@ -79,7 +82,7 @@ header.site nav a:hover{color:var(--ink)}
 .dose .n{flex:1;min-width:0}.dose .n b{display:block;font-size:15px}.dose .n small{color:var(--ink3);font-size:12px}
 .dose .chk{width:26px;height:26px;border-radius:50%;background:var(--success);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700}
 .dose .chk.soft{background:var(--surface);border:2px solid var(--border2)}
-@media (prefers-reduced-motion:reduce){.scanline{display:none}.tag,.result{animation:none;opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.scene:not(.motion) .scanline{display:none}.scene:not(.motion) .tag,.scene:not(.motion) .result{animation:none;opacity:1;transform:none}}
 
 /* ---------- scanning lab ---------- */
 .scan-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
@@ -136,7 +139,13 @@ header.site nav a:hover{color:var(--ink)}
 .read .row em.ok{color:var(--success)}
 .read .row.amber{background:var(--warning-pale);margin:0 -12px -10px;padding:7px 12px 9px;border-radius:0 0 13px 13px}
 .read .row.amber em{color:var(--warning-ink);font-weight:600}
-@media (prefers-reduced-motion:reduce){.gloss,.play .strip,.play .turn,.play .flash{animation:none}.play .cam{animation:none;opacity:0}.play .frame{animation:none;opacity:0}.play .read,.read{animation:none;opacity:1;transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.lab:not(.motion) .gloss,.lab:not(.motion) .strip,.lab:not(.motion) .turn,.lab:not(.motion) .flash{animation:none}.lab:not(.motion) .cam{animation:none;opacity:0}.lab:not(.motion) .frame{animation:none;opacity:0}.lab:not(.motion) .read{animation:none;opacity:1;transform:translateX(-50%)}}
+
+/* replay control (both demos) */
+.replay{appearance:none;border:1px solid var(--border2);background:var(--surface);color:var(--ink2);font:600 13px var(--font);padding:8px 12px;border-radius:999px;cursor:pointer}
+.replay:hover{color:var(--ink);border-color:var(--ink3)}
+.scene .replay{justify-self:center;margin-top:4px}
+.lab .replay{position:absolute;top:12px;right:12px;z-index:2}
 
 /* ---------- coral claims band ---------- */
 .band-brand{background:var(--brand);color:#fff;padding-block:56px}

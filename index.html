@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <div class="scene" aria-label="A pharmacy label being scanned into a dose schedule">
+    <div class="scene play" id="scene" aria-label="A pharmacy label being scanned into a dose schedule">
       <div class="rx">
         <div class="rx-head"><b>Westside Veterinary Pharmacy</b><span>Rx 4481902</span></div>
         <div class="rx-pt">BISCUIT SMITH (CANINE) &nbsp;·&nbsp; DR. CHEN</div>
@@ -52,6 +52,7 @@
         <div class="dose"><div class="t"><b>8:00</b><small>PM</small></div><div class="bar"></div><div class="n"><b>Apoquel 16mg</b><small>1 tablet · with food</small></div><div class="chk soft"></div></div>
         <div class="result-foot">Course ends Oct 27 · 2 refills · reminders set</div>
       </div>
+      <button class="replay" type="button" data-replay="scene" aria-label="Replay the scan">↻ Replay</button>
     </div>
   </div>
 </section>
@@ -114,6 +115,7 @@
         <div class="row"><span>14 days · 2 refills</span><em class="ok">2 of 3</em></div>
         <div class="row amber"><span>Patient: Biscuit</span><em>check</em></div>
       </div>
+      <button class="replay" type="button" data-replay="lab" aria-label="Replay the scan">↻ Replay</button>
     </div>
   </div>
 </section>
@@ -250,13 +252,21 @@ BISCUIT SMlTH K9</pre></div>
   <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a></nav>
 </footer>
 <script>
-// Replay the scanning sequence each time it scrolls into view. Pure CSS otherwise.
+// Animations: play on scroll-in (unless the visitor prefers reduced motion), and always on tap of Replay.
 (function(){
-  var lab=document.getElementById('lab'); if(!lab||!('IntersectionObserver' in window)) return;
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){
-    if(e.isIntersecting){lab.classList.remove('play');void lab.offsetWidth;lab.classList.add('play');}
-  });},{threshold:.5});
-  io.observe(lab);
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function replay(el,force){
+    if(reduce&&!force) return;
+    el.classList.add('motion');                 // opts in past the reduced-motion CSS for this run
+    el.classList.remove('play'); void el.offsetWidth; el.classList.add('play');
+  }
+  var lab=document.getElementById('lab'), scene=document.getElementById('scene');
+  if(lab&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting) replay(lab,false); });},{threshold:.5}).observe(lab);
+  }
+  document.querySelectorAll('[data-replay]').forEach(function(b){
+    b.addEventListener('click',function(){ replay(document.getElementById(b.getAttribute('data-replay')),true); });
+  });
 })();
 </script>
 </body>
