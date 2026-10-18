@@ -69,8 +69,8 @@
 <section class="band" id="scanning">
   <div class="wrap scan-grid">
     <div class="intro">
-      <h2>One frame of a curved label is never enough. So Glyph takes several.</h2>
-      <p>A bottle label bends away from the camera at both edges. Glossy ones catch the light. The far side of a 2‑inch vial is out of focus while the near side is sharp. Glyph shoots a short burst as you move the phone, reads the text in each frame on the device, and then reconciles them: where frames disagree, the reading that appears most often wins, and the field is marked as less certain.</p>
+      <h2>A curved label never fits in one frame. So Glyph walks around it.</h2>
+      <p>A bottle label bends away from the camera at both edges. Glossy ones catch the light. The far side of a 2‑inch vial is out of focus while the near side is sharp. As you sweep the phone across the bottle, Glyph fires the shutter several times, each frame catching the slice of label that is facing the lens. It reads the text in every frame on the device and then reconciles them: where frames disagree, the reading that appears most often wins, and the field is marked as less certain.</p>
       <ul class="facts">
         <li><b>Burst, not a snapshot.</b> Several frames from slightly different angles, taken while you sweep.</li>
         <li><b>Text is read on your phone.</b> Only the text goes to our server to be structured. Photos stay on the device and are not stored.</li>
@@ -84,22 +84,27 @@
         <div class="cap"></div>
         <div class="body">
           <div class="lbl">
-            <div class="lbl-inner">
-              <b>WESTSIDE VET PHARMACY</b>
-              <span>Rx 4481902 &nbsp; BISCUIT (K9)</span>
-              <strong>APOQUEL 16MG TAB</strong>
-              <span>1 TAB PO BID C FOOD X14D</span>
-              <span>QTY 28 &nbsp; RF 2 &nbsp; DR CHEN</span>
+            <!-- the label is wider than the visible face; it scrolls as the bottle turns -->
+            <div class="strip">
+              <div class="lbl-inner">
+                <b>WESTSIDE VET PHARMACY</b>
+                <span>Rx 4481902 · BISCUIT (K9)</span>
+                <strong>APOQUEL 16MG TAB</strong>
+                <span>1 TAB PO BID C FOOD X14D</span>
+                <span>QTY 28 · RF 2 · DR CHEN</span>
+              </div>
             </div>
             <div class="gloss"></div>
           </div>
         </div>
+        <div class="turn" aria-hidden="true">↻</div>
       </div>
       <div class="cam"><div class="lens"></div></div>
+      <div class="flash" aria-hidden="true"></div>
       <div class="frames">
-        <div class="frame f1"><i>WESTSlDE VET</i><i>APOQUEL 16MG</i><i>1 TAB PO B|D</i></div>
-        <div class="frame f2"><i>Rx 44819O2</i><i>APOQUEL 16MG TAB</i><i>PO BID C FOOD</i></div>
-        <div class="frame f3"><i>BISCUIT (K9)</i><i>TAB PO BID</i><i>C FOOD X14D  RF 2</i></div>
+        <div class="frame f1"><em>frame 1 · left edge</em><i>WESTSlDE V</i><i>Rx 44819O2</i><i>APOQUEL 1</i><i>1 TAB PO</i></div>
+        <div class="frame f2"><em>frame 2 · centre</em><i>VET PHARMACY</i><i>BISCUIT (K9)</i><i>16MG TAB</i><i>BID C FOOD</i></div>
+        <div class="frame f3"><em>frame 3 · right edge</em><i>ARMACY</i><i>(K9)</i><i>TAB</i><i>X14D  RF 2</i></div>
       </div>
       <div class="read">
         <span class="read-cap">Reconciled</span>
