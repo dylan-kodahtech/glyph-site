@@ -23,7 +23,7 @@
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1>Six‑point type. Pharmacy shorthand. Wrapped around a bottle.<br><em>Glyph reads it.</em></h1>
-      <p class="lede">Point your phone at the label. <span class="mono">1 TAB PO BID C FOOD X14D</span> becomes 8 a.m. and 8 p.m. with food for two weeks, with reminders, and a schedule you can share with whoever's holding the leash.</p>
+      <p class="lede">Point your phone at the label. <span class="mono">1 TAB PO BID C FOOD X14D</span> is read by AI into 8 a.m. and 8 p.m. with food for two weeks, with reminders, and a schedule you can share with whoever's holding the leash.</p>
       <div class="actions">
         <a class="btn btn-primary" href="support.html#beta">Join the iPhone beta</a>
         <span class="note">Free during beta. Android after launch.</span>
@@ -59,7 +59,7 @@
 <!-- the three claims, large, on coral -->
 <section class="band-brand">
   <div class="wrap claims">
-    <div><b>Under a minute</b><p>from bottle to first reminder. No typing the sig.</p></div>
+    <div><b>AI reads the label</b><p>in under a minute, from any pharmacy, in any format. No typing the sig.</p></div>
     <div><b>You confirm every field</b><p>before anything is saved. Unsure fields are flagged, not guessed.</p></div>
     <div><b>Reminders live on your phone</b><p>not on a server. Airplane mode, dead zones, still fires.</p></div>
   </div>
@@ -74,7 +74,7 @@
       <ul class="facts">
         <li><b>Burst, not a snapshot.</b> Several frames from slightly different angles, taken while you sweep.</li>
         <li><b>Text is read on your phone.</b> Only the text goes to our server to be structured. Photos stay on the device and are not stored.</li>
-        <li><b>Abbreviations expanded.</b> SID, BID, TID, q8h, PO, PRN, EOD, "x14d" become plain words and real clock times.</li>
+        <li><b>Structured by AI.</b> The text from every frame goes to a language model that knows pharmacy shorthand. SID, BID, q8h, PO, PRN, "x14d" become plain words and clock times, whatever the pharmacy's label format.</li>
         <li><b>Doubt is shown, not hidden.</b> A field that read differently across frames, or didn't appear at all, comes up amber for you to check.</li>
       </ul>
     </div>
@@ -115,6 +115,27 @@
         <div class="row amber"><span>Patient: Biscuit</span><em>check</em></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- AI -->
+<section class="band ai">
+  <div class="wrap ai-grid">
+    <div class="intro">
+      <h2>Read by AI. Confirmed by you.</h2>
+      <p>Every pharmacy prints labels differently, and every vet writes directions their own way. Pattern‑matching breaks on the second clinic. So Glyph hands the label text to a language model that understands prescriptions: it separates the drug from the strength, the dose from the frequency, a loading phase from the maintenance dose, and gives each field a confidence score.</p>
+    </div>
+    <div class="ai-cols">
+      <div>
+        <h3>What the AI does</h3>
+        <ul><li>Turns label text into fields: drug, strength, dose, how often, how long, refills, with‑food, prescriber</li><li>Expands shorthand and computes the course length from quantity and frequency</li><li>Tells medication from supplement by the cues on the label</li><li>Scores its own confidence per field, so doubt shows up amber</li></ul>
+      </div>
+      <div>
+        <h3>What it never does</h3>
+        <ul><li>Save anything without your confirmation</li><li>Suggest, change, or calculate a dose</li><li>Give medical advice or interactions</li><li>Train on your pet's data</li></ul>
+      </div>
+    </div>
+    <p class="fine">The model runs on our servers (Anthropic's Claude via our proxy), never on the photo: only the text read on your phone is sent, and it is not stored after the response. Details in the <a href="privacy.html">privacy policy</a>.</p>
   </div>
 </section>
 
