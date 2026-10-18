@@ -25,7 +25,7 @@ p{margin:0}
 .wrap{max-width:1120px;margin:0 auto}
 
 .wordmark{display:inline-flex;align-items:flex-end;gap:3px;font-weight:600;letter-spacing:-0.03em;text-decoration:none;font-size:22px;line-height:1}
-.wordmark::after{content:"";width:.24em;height:.24em;border-radius:50%;background:var(--brand);margin-bottom:.33em}
+.wordmark::after{content:"";width:.26em;height:.26em;border-radius:50%;background:var(--brand);margin-bottom:.3em}
 header.site{display:flex;align-items:center;justify-content:space-between;padding-block:22px}
 header.site nav{display:flex;gap:22px;font-size:15px;color:var(--ink2)}
 header.site nav a{text-decoration:none}
