@@ -19,7 +19,7 @@
 </header>
 <main class="wrap doc">
   <h1>Privacy policy</h1>
-  <p class="meta-line">Effective 2026-10-17 &middot; Kodah Tech LLC &middot; applies to the Glyph iOS app</p>
+  <p class="meta-line">Effective 2026-10-22 &middot; Kodah Tech LLC &middot; applies to the Glyph iOS app</p>
 
   <div class="box">
     <b>The short version</b>
@@ -31,7 +31,7 @@
     <li><b>Account.</b> If you sign in with Apple, we receive an identifier and, if you allow it, your name and email. Guest accounts have no name or email.</li>
     <li><b>Pets.</b> Name, species, breed, age, and a colour you pick.</li>
     <li><b>Medications and supplements.</b> What you confirm from a scanned label: product name, strength, dose, schedule, duration, refills, prescriber and clinic if printed, the original label text, and which fields the scan was unsure about.</li>
-    <li><b>Dose history.</b> When a dose was marked given, missed, or undone, and by which household member.</li>
+    <li><b>Dose history.</b> When a dose was marked given, missed, or undone.</li>
     <li><b>Households.</b> Who you invited, the display name they entered, and their role.</li>
     <li><b>Device data.</b> Reminder permission status. Reminders are scheduled on your phone; we do not run a push server.</li>
   </ul>
@@ -39,7 +39,7 @@
 
   <h2>Where it goes</h2>
   <ul>
-    <li><b>Our server (AWS, United States).</b> Label text passes through our server to be turned into structured fields. The server keeps request counts for rate limiting and does not log label text.</li>
+    <li><b>Our server (AWS, United States).</b> Label text passes through our server to be turned into structured fields. The server keeps a count of how many labels each account has parsed per day, to enforce a daily limit, and does not log label text.</li>
     <li><b>AI provider (Anthropic).</b> Label text is sent to Anthropic's API to be read. It is not used to train their models under the terms we operate on. Anthropic's handling is described in their own privacy policy.</li>
     <li><b>Database (Supabase, United States).</b> Your pets, medications, dose history, and household membership are stored here, protected so that only members of a pet's household can read them.</li>
     <li><b>Apple.</b> Sign in with Apple is handled by Apple; we never see your Apple password.</li>
@@ -56,7 +56,7 @@
   <p>Glyph is not directed at children under 13 and we do not knowingly collect data from them.</p>
 
   <h2>Changes</h2>
-  <p>If this policy changes in a way that matters, the app will tell you the next time you open it, and the date at the top of this page will change.</p>
+  <p>If this policy changes, the date at the top of this page will change. Check back here for the current version.</p>
 
   <h2>Contact</h2>
   <p>Questions about your data: <a href="mailto:glyph@kodahtech.com">glyph@kodahtech.com</a>.</p>
